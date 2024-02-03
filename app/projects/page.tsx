@@ -5,6 +5,7 @@ import CUSTOM from "@/public/CUSTOM.png";
 import MW from "@/public/MW.png";
 import homeMart from "@/public/homeMart.png";
 import quizzBot from "@/public/quizzBot.png";
+import kevetic from "@/public/kevetic.png";
 import QPS from "@/public/QPS.png";
 import M48 from "@/public/M48.png";
 import {
@@ -98,75 +99,73 @@ const defaultAnimations = {
 };
 
 function Projects() {
-  let sliced = projectArray.slice(1);
-  let first = projectArray[0];
   return (
     <div className="gap-4 flex flex-col w-11/12 m-auto transition-all duration-700 ease-in-out">
       <motion.div
-        initial={{ y: -1000 }}
-        animate={{ y: 0, type: "spring", transition: { duration: 2 } }}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          type: "spring",
+          transition: { duration: 1 },
+        }}
       >
-        <ProjectCard
-          name={first.projectName}
-          image={first.image}
-          summary={first.summary}
-          link={first.projectLink}
-          github={first.github}
-          styles={"w-full"}
-          first={first}
-        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 5 }}
+          className="bg-transparent border p-5 rounded-xl text-center"
+        >
+          <>
+            <Image
+              src={kevetic}
+              width={250}
+              height={50}
+              className="rounded-full m-auto p-10"
+              alt="profile picture"
+            />
+          </>
+          <span>Dedicated</span> developer specializing in the front-end with a
+          strong emphasis on React and related libraries. My passion lies in
+          staying on top of new technologies and continuously building{" "}
+          <span>innovative</span> solutions. Fueled by
+          <span> determination</span> and a love for learning, I bring{" "}
+          <span>creativity</span> to my work, leveraging it to enhance user
+          experiences and design. As a <span>team player</span>, I thrive in
+          collaborative environments, seamlessly integrating into diverse
+          cultures. My commitment to excellence and <span>adaptability</span>{" "}
+          makes me a valuable asset in any professional scenario, and my skills
+          contribute to the success of the teams I work with.
+        </motion.div>
       </motion.div>
       <motion.div
         initial="hidden"
-        animate="visible"
         transition={{ staggerChildren: 0.4, type: "spring" }}
-        className="md:grid md:grid-cols-3 gap-4 flex flex-col "
+        whileInView="visible"
+        className="gap-4 flex flex-col"
       >
-        {sliced.map((project, i) => (
+        {projectArray.map((project, i) => (
           <motion.div
             key={i}
             variants={defaultAnimations}
-            className="flex flex-col justify-center items-center"
+            className="flex flex-col justify-center items-center border rounded-lg h-full md:h-14 w-full md:w-1/3"
+            whileHover={{
+              width: "100%",
+              height: "100%",
+              transition: { duration: 0.4, ease: "easeInOut" },
+            }}
           >
-            <Drawer>
-              <DrawerTrigger className="text-center flex justify-center items-center flex-col p-12 w-full hover:scale-105 transition-all ease-in-out duration-500 border rounded-lg max-h-[150px] min-h-[150px]">
-                {project.projectName}
-                <Image
-                  src={project.image}
-                  alt="avatar"
-                  width={100}
-                  height={100}
-                  className="rounded-lg max-h-[70px]"
-                />
-              </DrawerTrigger>
-              <DrawerContent>
-                <DrawerHeader>
-                  <DrawerTitle>
-                    <h1>{project.projectName}</h1>
-                  </DrawerTitle>
-                  <DrawerDescription>
-                    <ProjectCard
-                      key={i}
-                      name={project.projectName}
-                      image={project.image}
-                      summary={project.summary}
-                      link={project.projectLink}
-                      github={project.github}
-                      styles={
-                        "w-full md:overflow-hidden  relative transition-all duration-700 ease-in-out border-none"
-                      }
-                    />
-                  </DrawerDescription>
-                </DrawerHeader>
-                <DrawerFooter>
-                  <DrawerClose>
-                    <ArrowUpIcon
-                      className={` h-10 w-full justify-center items-center flex hover:rotate-180 duration-500`}
-                    />
-                  </DrawerClose>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer>
+            <ProjectCard
+              key={i}
+              name={project.projectName}
+              image={project.image}
+              summary={project.summary}
+              link={project.projectLink}
+              github={project.github}
+              styles={
+                "w-full md:overflow-hidden  relative transition-all duration-700 ease-in-out border-none"
+              }
+            />
           </motion.div>
         ))}
       </motion.div>

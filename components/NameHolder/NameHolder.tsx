@@ -119,7 +119,7 @@ export const NameHolder = () => {
   });
 
   return (
-    <div className="w-screen flex flex-col justify-center items-center h-[500px] sm:h-[1000px]">
+    <div className="w-screen flex flex-col justify-center items-center h-screen absolute -top-24">
       <motion.div
         className="flex gap-3 p-5 z-10"
         initial={{ opacity: 0 }}
