@@ -9,16 +9,11 @@ import kevetic from "@/public/kevetic.png";
 import QPS from "@/public/QPS.png";
 import M48 from "@/public/M48.png";
 import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { ArrowUpIcon } from "@radix-ui/react-icons";
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -102,6 +97,31 @@ function Projects() {
   return (
     <div className="gap-4 flex flex-col w-11/12 m-auto transition-all duration-700 ease-in-out">
       <motion.div
+        initial="hidden"
+        transition={{ staggerChildren: 0.4, type: "spring" }}
+        whileInView="visible"
+        className="gap-4 flex-row justify-evenly hidden md:flex"
+      >
+        {projectArray.map((project, i) => (
+          <HoverCard key={i}>
+            <HoverCardTrigger className="cursor-pointer underline-offset-4 underline ">
+              {project.projectName}
+            </HoverCardTrigger>
+            <HoverCardContent className="w-[500px] m-2">
+              <ProjectCard
+                key={i}
+                name={project.projectName}
+                image={project.image}
+                summary={project.summary}
+                link={project.projectLink}
+                github={project.github}
+                styles={"border-none shadow-none"}
+              />
+            </HoverCardContent>
+          </HoverCard>
+        ))}
+      </motion.div>
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
@@ -114,7 +134,7 @@ function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 5 }}
-          className="bg-transparent border p-5 rounded-xl text-center"
+          className="bg-transparent border p-5 rounded-xl text-center md:w-1/2 m-auto"
         >
           <>
             <Image
@@ -138,37 +158,17 @@ function Projects() {
           contribute to the success of the teams I work with.
         </motion.div>
       </motion.div>
-      <motion.div
-        initial="hidden"
-        transition={{ staggerChildren: 0.4, type: "spring" }}
-        whileInView="visible"
-        className="gap-4 flex flex-col"
-      >
-        {projectArray.map((project, i) => (
-          <motion.div
-            key={i}
-            variants={defaultAnimations}
-            className="flex flex-col justify-center items-center border rounded-lg h-full md:h-14 w-full md:w-1/2"
-            whileHover={{
-              width: "100%",
-              height: "100%",
-              transition: { duration: 0.4, ease: "easeInOut" },
-            }}
-          >
-            <ProjectCard
-              key={i}
-              name={project.projectName}
-              image={project.image}
-              summary={project.summary}
-              link={project.projectLink}
-              github={project.github}
-              styles={
-                "w-full md:overflow-hidden  relative transition-all duration-700 ease-in-out border-none"
-              }
-            />
-          </motion.div>
-        ))}
-      </motion.div>
+      {projectArray.map((project, i) => (
+        <ProjectCard
+          key={i}
+          name={project.projectName}
+          image={project.image}
+          summary={project.summary}
+          link={project.projectLink}
+          github={project.github}
+          styles={"md:hidden"}
+        />
+      ))}
     </div>
   );
 }

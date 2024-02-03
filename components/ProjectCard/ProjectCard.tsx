@@ -24,21 +24,23 @@ function ProjectCard({
   return (
     <Card className={styles}>
       <CardHeader>
-        <CardTitle className="text-center md:text-left">{name}</CardTitle>
-        <CardDescription className="w-full p-2 text-center md:text-left md:w-1/2">
+        <CardTitle className="text-center justify-center items-center">
+          {name}
+        </CardTitle>
+        <CardDescription className="w-full p-2 text-center">
           {summary}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex justify-center items-center overflow-hidden md:w-full">
+      <CardContent className="">
         <Image
           src={image}
           alt={name}
-          width={500}
-          height={500}
-          className="rounded-lg p-10 md:max-h-96"
+          width={200}
+          height={200}
+          className="text-center m-auto"
         />
       </CardContent>
-      <CardFooter className="w-full flex justify-center gap-4">
+      <CardFooter className="justify-around">
         {github ? (
           <Link href={github}>
             <Button>Github</Button>
