@@ -26,17 +26,17 @@ export const NameHolder = () => {
     await animate(
       "span",
       { opacity: 1, width: "100%" },
-      { duration: 0.3, type: "spring", ease: "easeInOut", delay: 1 }
+      { duration: 0.3, type: "spring", ease: "linear", delay: 1 }
     );
     animate(
       "span",
       { opacity: 1, x: 50, width: "29.5%" },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "linear" }
     );
     await animate(
       "span",
       { opacity: 1, x: 500, width: "1px" },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "linear" }
     );
     await animate(
       "span",
@@ -47,7 +47,7 @@ export const NameHolder = () => {
         height: "180px",
         width: "1px",
       },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "linear" }
     );
     await animate(
       "span",
@@ -58,7 +58,7 @@ export const NameHolder = () => {
         height: "1px",
         width: "1px",
       },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "linear" }
     );
     await animate(
       "span",
@@ -69,7 +69,7 @@ export const NameHolder = () => {
         height: "1px",
         width: "100%",
       },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "linear" }
     );
     await animate(
       "span",
@@ -80,7 +80,7 @@ export const NameHolder = () => {
         height: "1px",
         width: "1px",
       },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "linear" }
     );
     await animate(
       "span",
@@ -91,7 +91,7 @@ export const NameHolder = () => {
         height: "180px",
         width: "1px",
       },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "linear" }
     );
     await animate(
       "span",
@@ -102,7 +102,7 @@ export const NameHolder = () => {
         height: "1px",
         width: "1px",
       },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "linear" }
     );
     await animate(
       "span",
@@ -111,7 +111,7 @@ export const NameHolder = () => {
         width: "100%",
         x: 0,
       },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "linear" }
     );
   };
   useEffect(() => {
@@ -140,6 +140,7 @@ export const NameHolder = () => {
             <motion.div
               key={i}
               variants={defaultAnimations}
+              transition={{ ease: "linear" }}
               className={`${caveat.className} text-8xl sm:text-9xl`}
             >
               {char}
