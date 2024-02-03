@@ -1,3 +1,4 @@
+"use client";
 import React, { useState } from "react";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import CUSTOM from "@/public/CUSTOM.png";
@@ -17,8 +18,8 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 let projectArray = [
   {
@@ -83,25 +84,52 @@ let projectArray = [
   },
 ];
 
+const defaultAnimations = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+    x: -50,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    x: 0,
+  },
+};
+
 function Projects() {
   let sliced = projectArray.slice(1);
   let first = projectArray[0];
   return (
     <div className="gap-4 flex flex-col w-11/12 m-auto transition-all duration-700 ease-in-out">
-      <ProjectCard
-        name={first.projectName}
-        image={first.image}
-        summary={first.summary}
-        link={first.projectLink}
-        github={first.github}
-        styles={"w-full"}
-        first={first}
-      />
-      <div className="md:grid md:grid-cols-3 gap-4 flex flex-col ">
+      <motion.div
+        initial={{ y: -1000 }}
+        animate={{ y: 0, type: "spring", transition: { duration: 2 } }}
+      >
+        <ProjectCard
+          name={first.projectName}
+          image={first.image}
+          summary={first.summary}
+          link={first.projectLink}
+          github={first.github}
+          styles={"w-full"}
+          first={first}
+        />
+      </motion.div>
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        transition={{ staggerChildren: 0.4, type: "spring" }}
+        className="md:grid md:grid-cols-3 gap-4 flex flex-col "
+      >
         {sliced.map((project, i) => (
-          <>
+          <motion.div
+            key={i}
+            variants={defaultAnimations}
+            className="flex flex-col justify-center items-center"
+          >
             <Drawer>
-              <DrawerTrigger className="border rounded-lg p-3 flex flex-col justify-center items-center min-h-[150px] hover:scale-105 transition-all ease-in-out duration-500">
+              <DrawerTrigger className="text-center flex justify-center items-center flex-col p-12 w-full hover:scale-105 transition-all ease-in-out duration-500 border rounded-lg max-h-[150px] min-h-[150px]">
                 {project.projectName}
                 <Image
                   src={project.image}
@@ -139,9 +167,9 @@ function Projects() {
                 </DrawerFooter>
               </DrawerContent>
             </Drawer>
-          </>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }

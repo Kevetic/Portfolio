@@ -140,13 +140,13 @@ export const NameHolder = () => {
             <motion.div
               key={i}
               variants={defaultAnimations}
-              className={`${caveat.className} text-5xl sm:text-9xl`}
+              className={`${caveat.className} text-8xl sm:text-9xl`}
             >
               {char}
             </motion.div>
           ))}
         </motion.div>
-        <motion.div ref={scope} className="w-full hidden md:flex">
+        <motion.div ref={scope} className="w-full hidden sm:flex">
           <motion.span className="border border-red-500 md:flex w-1/12 absolute hidden"></motion.span>
         </motion.div>
       </div>
