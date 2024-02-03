@@ -148,7 +148,7 @@ function Projects() {
           <motion.div
             key={i}
             variants={defaultAnimations}
-            className="flex flex-col justify-center items-center border rounded-lg h-full md:h-14 w-full md:w-1/3"
+            className="flex flex-col justify-center items-center border rounded-lg h-full md:h-14 w-full md:w-1/2"
             whileHover={{
               width: "100%",
               height: "100%",
