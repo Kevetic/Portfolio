@@ -26,7 +26,7 @@ export const NameHolder = () => {
     await animate(
       "span",
       { opacity: 1, width: "100%" },
-      { duration: 0.3, type: "spring", ease: "easeInOut" }
+      { duration: 0.3, type: "spring", ease: "easeInOut", delay: 1 }
     );
     animate(
       "span",
@@ -147,7 +147,7 @@ export const NameHolder = () => {
           ))}
         </motion.div>
         <motion.div ref={scope} className="w-full hidden sm:flex">
-          <motion.span className="border border-red-500 md:flex w-1/12 absolute hidden"></motion.span>
+          <motion.span className="border border-red-500 md:flex absolute hidden"></motion.span>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 50 }}
