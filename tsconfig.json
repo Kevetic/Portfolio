@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/NameHolder/NameHolder.jsx"
+    "components/NameHolder/NameHolder.ts",
+    "app/add-project/page.jsx"
   ],
   "exclude": ["node_modules"]
 }

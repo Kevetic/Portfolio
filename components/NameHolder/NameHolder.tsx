@@ -1,6 +1,8 @@
 "use client";
+import { useEffect, useState } from "react";
 import { Caveat } from "next/font/google";
-import { motion } from "framer-motion";
+import { motion, useAnimate } from "framer-motion";
+import Link from "next/link";
 
 const caveat = Caveat({ subsets: ["latin"], weight: "700" });
 
@@ -18,28 +20,137 @@ const defaultAnimations = {
   },
 };
 export const NameHolder = () => {
+  const [scope, animate] = useAnimate();
+
+  const handleBorderAnimation = async () => {
+    await animate(
+      "span",
+      { opacity: 1, width: "100%" },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+    animate(
+      "span",
+      { opacity: 1, x: 50, width: "29.5%" },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+    await animate(
+      "span",
+      { opacity: 1, x: 500, width: "1px" },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+    await animate(
+      "span",
+      {
+        opacity: 1,
+        x: 500,
+        y: -180,
+        height: "180px",
+        width: "1px",
+      },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+    await animate(
+      "span",
+      {
+        opacity: 1,
+        x: 500,
+        y: -180,
+        height: "1px",
+        width: "1px",
+      },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+    await animate(
+      "span",
+      {
+        opacity: 1,
+        x: 0,
+        y: -180,
+        height: "1px",
+        width: "100%",
+      },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+    await animate(
+      "span",
+      {
+        opacity: 1,
+        x: 0,
+        y: -180,
+        height: "1px",
+        width: "1px",
+      },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+    await animate(
+      "span",
+      {
+        opacity: 1,
+        x: 0,
+        y: -180,
+        height: "180px",
+        width: "1px",
+      },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+    await animate(
+      "span",
+      {
+        opacity: 1,
+        x: 0,
+        y: 0,
+        height: "1px",
+        width: "1px",
+      },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+    await animate(
+      "span",
+      {
+        opacity: 1,
+        width: "100%",
+        x: 0,
+      },
+      { duration: 0.5, type: "spring", ease: "easeInOut" }
+    );
+  };
+  useEffect(() => {
+    handleBorderAnimation();
+  });
+
   return (
-    <>
+    <div className="w-screen flex flex-col justify-center items-center h-[500px] sm:h-[1000px]">
       <motion.div
-        className={`${caveat.className} text-red-800 flex absolute`}
-        initial="hidden"
-        animate="visible"
-        transition={{ staggerChildren: 0.3 }}
+        className="flex gap-3 p-5 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 4 }}
       >
-        {name.map((char, i) => (
-          <motion.div
-            key={i}
-            variants={defaultAnimations}
-            className={`${caveat.className} text-red-800 text-9xl`}
-          >
-            {char}
-          </motion.div>
-        ))}
+        <Link href={"/projects"}>PROJECTS</Link> |{" "}
+        <Link href={"/contact"}>CONTACT</Link>
       </motion.div>
-      <motion.div className={`${caveat.className} text-white text-9xl`}>
-        KEVETIC
-      </motion.div>
-    </>
+      <div className="relative">
+        <motion.div
+          className={`${caveat.className} flex`}
+          initial="hidden"
+          animate="visible"
+          transition={{ staggerChildren: 0.4, type: "spring" }}
+        >
+          {name.map((char, i) => (
+            <motion.div
+              key={i}
+              variants={defaultAnimations}
+              className={`${caveat.className} text-5xl sm:text-9xl`}
+            >
+              {char}
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div ref={scope} className="w-full hidden md:flex">
+          <motion.span className="border border-red-500 md:flex w-1/12 absolute hidden"></motion.span>
+        </motion.div>
+      </div>
+    </div>
   );
 };
 

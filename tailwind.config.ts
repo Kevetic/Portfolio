@@ -7,6 +7,7 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./src/**/*.{html,js}",
   ],
   prefix: "",
   theme: {
@@ -18,9 +19,6 @@ const config = {
       },
     },
     extend: {
-      fontFamily: {
-        Protest: ["Protest Revolution"],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
