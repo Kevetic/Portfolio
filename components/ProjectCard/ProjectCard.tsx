@@ -15,7 +15,7 @@ function ProjectCard({ summary, link, github, styles, demo, name }: any) {
   return (
     <>
       <h1 className="text-center m-10">{name}</h1>
-      <div className="relative max-h-[300px] m-8">
+      <div className="relative">
         <motion.div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -25,7 +25,7 @@ function ProjectCard({ summary, link, github, styles, demo, name }: any) {
             height="260"
             loop
             autoPlay={true}
-            webkit-playsInline
+            webkit-playsInline={true}
             playsInline
             muted
             className={`${
