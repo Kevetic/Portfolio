@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/hover-card";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { easeInOut, motion } from "framer-motion";
 
 let projectArray = [
   {
@@ -100,12 +100,16 @@ function Projects() {
         initial="hidden"
         transition={{ staggerChildren: 0.4, type: "spring" }}
         whileInView="visible"
-        className="gap-4 lg:flex-col w-full justify-evenly lg:flex md:hidden"
+        className="gap-4 lg:flex-col w-full lg:flex md:hidden"
       >
         {projectArray.map((project, i) => (
           <motion.div
-            whileHover={{ height: "100%", width: "100%" }}
-            className="lg:h-16 lg:overflow-hidden hidden md:flex"
+            whileHover={{
+              height: "50%",
+              width: "40vw",
+              transition: easeInOut,
+            }}
+            className="lg:h-24 lg:overflow-hidden hidden md:flex"
             key={i}
           >
             <ProjectCard
@@ -114,7 +118,7 @@ function Projects() {
               summary={project.summary}
               link={project.projectLink}
               github={project.github}
-              styles={""}
+              styles={"cursor-pointer"}
             />
           </motion.div>
         ))}
@@ -132,7 +136,7 @@ function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 5 }}
-          className="bg-transparent p-5 rounded-xl text-center lg:w-1/2 m-auto"
+          className="bg-transparent p-5 rounded-xl text-center lg:w-6/12 m-auto"
         >
           <>
             <Image
