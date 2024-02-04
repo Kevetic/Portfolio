@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Caveat } from "next/font/google";
 import { motion, useAnimate } from "framer-motion";
 import Link from "next/link";
@@ -21,6 +21,7 @@ const defaultAnimations = {
 };
 export const NameHolder = () => {
   const [scope, animate] = useAnimate();
+  const videoRef = useRef(null);
 
   const handleBorderAnimation = async () => {
     await animate(
