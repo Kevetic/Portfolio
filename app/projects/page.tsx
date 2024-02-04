@@ -95,30 +95,28 @@ const defaultAnimations = {
 
 function Projects() {
   return (
-    <div className="gap-4 flex flex-col justify-evenly w-11/12 m-auto transition-all duration-700 ease-in-out">
+    <div className="gap-4 lg:flex justify-evenly w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative lg:mt-20">
       <motion.div
         initial="hidden"
         transition={{ staggerChildren: 0.4, type: "spring" }}
         whileInView="visible"
-        className="gap-4 flex-row justify-evenly hidden lg:flex"
+        className="gap-4 lg:flex-col w-full justify-evenly lg:flex md:hidden"
       >
         {projectArray.map((project, i) => (
-          <HoverCard key={i}>
-            <HoverCardTrigger className="cursor-pointer underline-offset-4 underline hover:scale-105 transition-all ease-in-out hover:animate-pulse hover:text-primary ">
-              {project.projectName}
-            </HoverCardTrigger>
-            <HoverCardContent className="w-[500px] m-2">
-              <ProjectCard
-                key={i}
-                name={project.projectName}
-                image={project.image}
-                summary={project.summary}
-                link={project.projectLink}
-                github={project.github}
-                styles={"border-none shadow-none"}
-              />
-            </HoverCardContent>
-          </HoverCard>
+          <motion.div
+            whileHover={{ height: "100%", width: "100%" }}
+            className="lg:h-16 lg:overflow-hidden hidden md:flex"
+            key={i}
+          >
+            <ProjectCard
+              name={project.projectName}
+              image={project.image}
+              summary={project.summary}
+              link={project.projectLink}
+              github={project.github}
+              styles={""}
+            />
+          </motion.div>
         ))}
       </motion.div>
       <motion.div
@@ -134,7 +132,7 @@ function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 5 }}
-          className="bg-transparent border p-5 rounded-xl text-center lg:w-1/2 m-auto md:mt-20"
+          className="bg-transparent p-5 rounded-xl text-center lg:w-1/2 m-auto"
         >
           <>
             <Image
@@ -166,7 +164,7 @@ function Projects() {
           summary={project.summary}
           link={project.projectLink}
           github={project.github}
-          styles={"lg:hidden"}
+          styles={"lg:hidden flex flex-col m-4"}
         />
       ))}
     </div>

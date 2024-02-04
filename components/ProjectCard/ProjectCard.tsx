@@ -24,7 +24,7 @@ function ProjectCard({
   return (
     <Card className={styles}>
       <CardHeader>
-        <CardTitle className="text-center justify-center items-center">
+        <CardTitle className="text-center justify-center items-center lg:m-2">
           {name}
         </CardTitle>
         <CardDescription className="w-full p-2 text-center">
