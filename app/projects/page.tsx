@@ -101,11 +101,11 @@ function Projects() {
           <motion.div
             variants={defaultAnimations}
             whileHover={{
-              height: "50%",
+              height: "90%",
               width: "40vw",
               transition: easeInOut,
             }}
-            className="lg:h-24 lg:w-[300px] lg:overflow-hidden hidden md:flex"
+            className="lg:h-14 lg:w-[300px] lg:overflow-hidden hidden md:flex"
             key={i}
           >
             <ProjectCard
