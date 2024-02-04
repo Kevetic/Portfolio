@@ -9,6 +9,9 @@ import QPS from "@/public/QPS.png";
 import M48 from "@/public/M48.png";
 import { motion } from "framer-motion";
 import CustomCursor from "@/components/Cursor/CustomCursor";
+import { Caveat } from "next/font/google";
+
+const caveat = Caveat({ subsets: ["latin"], weight: "700" });
 
 let projectArray = [
   {
@@ -91,7 +94,8 @@ const defaultAnimations = {
     x: 0,
   },
 };
-
+let goal = "THE GOAL";
+let split = goal.split("");
 function Projects() {
   return (
     <div className="gap-4 lg:flex flex-col justify-evenly w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative ">
@@ -109,10 +113,22 @@ function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 2 }}
-          className="p-5 rounded-xl text-center lg:w-10/12 m-auto lg:flex gap-10"
+          className="p-5 rounded-xl text-center lg:w-11/12 m-auto lg:flex gap-10 relative"
         >
-          <div className="bg-kevetic p-5 rounded-full text-center min-w-[200px] min-h-[200px] max-w-[200px] max-h-[200px] bg-cover m-auto mb-10 " />
-          <div className="lg:text-left">
+          <div className="bg-kevetic p-5 rounded-full text-center min-w-[200px] min-h-[200px] max-w-[200px] max-h-[200px] bg-cover m-auto mb-10 z-10" />
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            transition={{ staggerChildren: 0.3, type: "spring" }}
+            className={`${caveat.className} absolute w-full h-full text-9xl text-foreground justify-end items-start top-30 opacity-25 flex gap-5`}
+          >
+            {split.map((char, i) => (
+              <motion.h1 variants={defaultAnimations} key={i}>
+                {char}
+              </motion.h1>
+            ))}
+          </motion.h1>
+          <div className="lg:text-left lg:w-3/5">
             In each of my projects, whether they are small or abstract, my
             overall objective remains consistent. Fueled by a profound curiosity
             for engaging technologies such as React Three Fiber and libraries

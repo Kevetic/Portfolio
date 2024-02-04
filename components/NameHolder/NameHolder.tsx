@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Caveat } from "next/font/google";
 import { motion, useAnimate } from "framer-motion";
 import Link from "next/link";
+import { Caveat } from "next/font/google";
 
 const caveat = Caveat({ subsets: ["latin"], weight: "700" });
 

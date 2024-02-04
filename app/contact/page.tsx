@@ -35,7 +35,7 @@ let socials = [
   },
   {
     social: "Email",
-    link: "kevetic@outlook.com",
+    link: "mailto:kevetic@outlook.com",
     icon: <EnvelopeClosedIcon width={50} height={50} />,
   },
 ];
@@ -45,7 +45,7 @@ function ContactPage() {
       initial="hidden"
       animate="visible"
       transition={{ staggerChildren: 0.4, type: "spring" }}
-      className="flex flex-col sm:flex-row justify-around items-center lg:min-h-[800px] w-full"
+      className="flex flex-col sm:flex-row justify-around items-center sm:min-h-[800px] w-full"
     >
       <CustomCursor />
       {socials.map((social, i) => {
