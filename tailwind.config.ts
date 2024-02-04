@@ -19,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        kevetic: "url(../public/kevetic.png)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

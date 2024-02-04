@@ -96,20 +96,16 @@ const defaultAnimations = {
 function Projects() {
   return (
     <div className="gap-4 lg:flex justify-evenly w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative lg:mt-20">
-      <motion.div
-        initial="hidden"
-        transition={{ staggerChildren: 0.4, type: "spring" }}
-        whileInView="visible"
-        className="gap-4 lg:flex-col w-full lg:flex md:hidden"
-      >
+      <motion.div className="gap-4 lg:flex-col w-full lg:flex md:hidden">
         {projectArray.map((project, i) => (
           <motion.div
+            variants={defaultAnimations}
             whileHover={{
               height: "50%",
               width: "40vw",
               transition: easeInOut,
             }}
-            className="lg:h-24 lg:overflow-hidden hidden md:flex"
+            className="lg:h-24 lg:w-[300px] lg:overflow-hidden hidden md:flex"
             key={i}
           >
             <ProjectCard
@@ -136,28 +132,19 @@ function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 5 }}
-          className="bg-transparent p-5 rounded-xl text-center lg:w-6/12 m-auto"
+          className="p-5 rounded-xl text-center lg:w-8/12 m-auto"
         >
-          <>
-            <Image
-              src={kevetic}
-              width={250}
-              height={50}
-              className="rounded-full m-auto p-10"
-              alt="profile picture"
-            />
-          </>
-          <span>Dedicated</span> developer specializing in the front-end with a
-          strong emphasis on React and related libraries. My passion lies in
-          staying on top of new technologies and continuously building{" "}
-          <span>innovative</span> solutions. Fueled by
-          <span> determination</span> and a love for learning, I bring{" "}
-          <span>creativity</span> to my work, leveraging it to enhance user
-          experiences and design. As a <span>team player</span>, I thrive in
-          collaborative environments, seamlessly integrating into diverse
-          cultures. My commitment to excellence and <span>adaptability</span>{" "}
-          makes me a valuable asset in any professional scenario, and my skills
-          contribute to the success of the teams I work with.
+          <div className="bg-kevetic p-5 rounded-full text-center w-[150px] h-[150px] bg-cover m-auto mb-10"></div>
+          Dedicated developer specializing in the front-end with a strong
+          emphasis on React and related libraries. My passion lies in staying on
+          top of new technologies and continuously building innovative
+          solutions. Fueled by determination and a love for learning, I bring{" "}
+          creativity to my work, leveraging it to enhance user experiences and
+          design. As a team player, I thrive in collaborative environments,
+          seamlessly integrating into diverse cultures. My commitment to
+          excellence and adaptability makes me a valuable asset in any
+          professional scenario, and my skills contribute to the success of the
+          teams I work with.
         </motion.div>
       </motion.div>
       {projectArray.map((project, i) => (
