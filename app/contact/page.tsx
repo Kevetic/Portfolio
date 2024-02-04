@@ -44,7 +44,7 @@ function ContactPage() {
       initial="hidden"
       animate="visible"
       transition={{ staggerChildren: 0.4, type: "spring" }}
-      className="flex flex-col sm:flex-row justify-around items-center min-h-[800px] w-full"
+      className="flex flex-col sm:flex-row justify-around items-center lg:min-h-[800px] w-full"
     >
       {socials.map((social, i) => {
         return (

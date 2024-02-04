@@ -134,7 +134,7 @@ function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 5 }}
-          className="bg-transparent border p-5 rounded-xl text-center lg:w-1/2 m-auto"
+          className="bg-transparent border p-5 rounded-xl text-center lg:w-1/2 m-auto md:mt-20"
         >
           <>
             <Image
