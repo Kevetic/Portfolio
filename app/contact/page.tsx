@@ -7,6 +7,7 @@ import {
 } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import CustomCursor from "@/components/Cursor/CustomCursor";
 
 const defaultAnimations = {
   hidden: {
@@ -46,6 +47,7 @@ function ContactPage() {
       transition={{ staggerChildren: 0.4, type: "spring" }}
       className="flex flex-col sm:flex-row justify-around items-center lg:min-h-[800px] w-full"
     >
+      <CustomCursor />
       {socials.map((social, i) => {
         return (
           <motion.div key={i} variants={defaultAnimations}>

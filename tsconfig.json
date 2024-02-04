@@ -27,7 +27,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "components/NameHolder/NameHolder.ts",
-    "app/add-project/page.jsx"
+    "app/add-project/page.jsx",
+    "components/CustomMouse/CustomMouse.js"
   ],
   "exclude": ["node_modules"]
 }

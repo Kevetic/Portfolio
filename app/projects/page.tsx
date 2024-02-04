@@ -1,21 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import CUSTOM from "@/public/CUSTOM.png";
 import MW from "@/public/MW.png";
 import homeMart from "@/public/homeMart.png";
 import quizzBot from "@/public/quizzBot.png";
-import kevetic from "@/public/kevetic.png";
 import QPS from "@/public/QPS.png";
 import M48 from "@/public/M48.png";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
 
-import Image from "next/image";
 import { easeInOut, motion } from "framer-motion";
+import CustomCursor from "@/components/Cursor/CustomCursor";
 
 let projectArray = [
   {
@@ -96,6 +90,7 @@ const defaultAnimations = {
 function Projects() {
   return (
     <div className="gap-4 lg:flex justify-evenly w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative lg:mt-20">
+      <CustomCursor />
       <motion.div className="gap-4 lg:flex-col w-full lg:flex md:hidden">
         {projectArray.map((project, i) => (
           <motion.div
@@ -105,7 +100,7 @@ function Projects() {
               width: "40vw",
               transition: easeInOut,
             }}
-            className="lg:h-14 lg:w-[300px] lg:overflow-hidden hidden md:flex"
+            className="lg:h-14 lg:w-[300px] lg:overflow-hidden hidden md:flex "
             key={i}
           >
             <ProjectCard
@@ -114,7 +109,7 @@ function Projects() {
               summary={project.summary}
               link={project.projectLink}
               github={project.github}
-              styles={"cursor-pointer"}
+              styles={""}
             />
           </motion.div>
         ))}
@@ -132,9 +127,9 @@ function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 5 }}
-          className="p-5 rounded-xl text-center lg:w-8/12 m-auto"
+          className="p-5 rounded-xl text-center lg:w-8/12 m-auto "
         >
-          <div className="bg-kevetic p-5 rounded-full text-center w-[150px] h-[150px] bg-cover m-auto mb-10"></div>
+          <div className="bg-kevetic p-5 rounded-full text-center w-[150px] h-[150px] bg-cover m-auto mb-10 "></div>
           Dedicated developer specializing in the front-end with a strong
           emphasis on React and related libraries. My passion lies in staying on
           top of new technologies and continuously building innovative
