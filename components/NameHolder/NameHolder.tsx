@@ -121,13 +121,24 @@ export const NameHolder = () => {
   return (
     <div className="w-screen flex flex-col justify-center items-center h-screen absolute -top-24">
       <motion.div
-        className="flex gap-3 p-5 z-10"
+        className="flex gap-3 p-5 z-10 "
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 3 }}
       >
-        <Link href={"/projects"}>PROJECTS</Link> |{" "}
-        <Link href={"/contact"}>CONTACT</Link>
+        <Link
+          className="hover:text-primary hover:animate-pulse hover:scale-110 transition-all ease-in-out"
+          href={"/projects"}
+        >
+          PROJECTS
+        </Link>{" "}
+        |{" "}
+        <Link
+          className="hover:text-primary hover:animate-pulse hover:scale-105 transition-all ease-in-out"
+          href={"/contact"}
+        >
+          CONTACT
+        </Link>
       </motion.div>
       <div className="relative">
         <motion.div
@@ -141,14 +152,14 @@ export const NameHolder = () => {
               key={i}
               variants={defaultAnimations}
               transition={{ ease: "linear" }}
-              className={`${caveat.className} text-8xl sm:text-9xl`}
+              className={`${caveat.className} text-8xl sm:text-9x`}
             >
               {char}
             </motion.div>
           ))}
         </motion.div>
         <motion.div ref={scope} className="w-full hidden sm:flex">
-          <motion.span className="border border-red-500 md:flex absolute hidden"></motion.span>
+          <motion.span className="border border-red-500 lg:flex absolute hidden"></motion.span>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 50 }}

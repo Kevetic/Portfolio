@@ -54,7 +54,7 @@ export default function Projects() {
       transition={{ staggerChildren: 0.4 }}
       className="flex justify-center items-baseline text-center h-full relative"
     >
-      <div className="project-container w-9/12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 z-10">
+      <div className="project-container w-9/12 grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-4 z-10">
         {projectArray.map((project, idx) => (
           <motion.div
             key={idx}

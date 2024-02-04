@@ -6,7 +6,6 @@ import {
   EnvelopeClosedIcon,
 } from "@radix-ui/react-icons";
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const defaultAnimations = {
@@ -52,7 +51,7 @@ function ContactPage() {
           <motion.div key={i} variants={defaultAnimations}>
             <Link
               href={social.link}
-              className="min-h-[200px] text-center p-10 hover:scale-105 transition-all duration-300 flex flex-col justify-center items-center sm:border sm:p-20 sm:rounded-lg"
+              className="min-h-[200px] text-center p-10 hover:scale-105 transition-all duration-300 flex flex-col justify-center items-center sm:border sm:p-20 sm:rounded-lg hover:shadow-primary hover:text-primary hover:shadow-sm"
             >
               {social.icon}
               <div>{social.social}</div>

@@ -95,16 +95,16 @@ const defaultAnimations = {
 
 function Projects() {
   return (
-    <div className="gap-4 flex flex-col w-11/12 m-auto transition-all duration-700 ease-in-out">
+    <div className="gap-4 flex flex-col justify-evenly w-11/12 m-auto transition-all duration-700 ease-in-out">
       <motion.div
         initial="hidden"
         transition={{ staggerChildren: 0.4, type: "spring" }}
         whileInView="visible"
-        className="gap-4 flex-row justify-evenly hidden md:flex"
+        className="gap-4 flex-row justify-evenly hidden lg:flex"
       >
         {projectArray.map((project, i) => (
           <HoverCard key={i}>
-            <HoverCardTrigger className="cursor-pointer underline-offset-4 underline ">
+            <HoverCardTrigger className="cursor-pointer underline-offset-4 underline hover:scale-105 transition-all ease-in-out hover:animate-pulse hover:text-primary ">
               {project.projectName}
             </HoverCardTrigger>
             <HoverCardContent className="w-[500px] m-2">
@@ -134,7 +134,7 @@ function Projects() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 5 }}
-          className="bg-transparent border p-5 rounded-xl text-center md:w-1/2 m-auto"
+          className="bg-transparent border p-5 rounded-xl text-center lg:w-1/2 m-auto"
         >
           <>
             <Image
@@ -166,7 +166,7 @@ function Projects() {
           summary={project.summary}
           link={project.projectLink}
           github={project.github}
-          styles={"md:hidden"}
+          styles={"lg:hidden"}
         />
       ))}
     </div>
