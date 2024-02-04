@@ -14,7 +14,7 @@ let projectArray = [
   {
     projectName: "OpenAi QuizzBot",
     image: quizzBot,
-    demo: "/quizzBot.mp4",
+    demo: "/QuizzBot.mp4",
     summary:
       "This bot quizzes users on ANY subject by utilizing an API call to OpenAI, generating an unlimited number of questions within budget constraints. The motivation behind its development was to simultaneously test my knowledge and enhance coding skills, creating an efficient and interactive self-quizzing tool.",
     challenges: "",
