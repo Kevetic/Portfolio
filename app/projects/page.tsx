@@ -94,7 +94,7 @@ const defaultAnimations = {
     x: 0,
   },
 };
-let goal = "THE GOAL";
+let goal = "OBJECTIVE";
 let split = goal.split("");
 function Projects() {
   return (
@@ -120,7 +120,7 @@ function Projects() {
             initial="hidden"
             animate="visible"
             transition={{ staggerChildren: 0.3, type: "spring" }}
-            className={`${caveat.className} absolute w-full h-full text-9xl text-foreground justify-end items-start top-30 opacity-25 flex gap-5`}
+            className={`${caveat.className} absolute w-full h-full text-9xl text-foreground justify-end items-start top-20 opacity-20 lg:flex gap-5 hidden `}
           >
             {split.map((char, i) => (
               <motion.h1 variants={defaultAnimations} key={i}>
