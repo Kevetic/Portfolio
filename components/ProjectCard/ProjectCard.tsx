@@ -25,8 +25,8 @@ function ProjectCard({ summary, link, github, styles, demo, name }: any) {
             height="260"
             loop
             autoPlay={true}
-            webkit-playsinline
-            playsinline
+            webkit-playsInline
+            playsInline
             muted
             className={`${
               isHovered ? "opacity-0" : null
