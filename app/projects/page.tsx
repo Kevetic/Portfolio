@@ -145,7 +145,7 @@ function Projects() {
               summary={project.summary}
               link={project.projectLink}
               github={project.github}
-              styles={"absolute top-0 h-fit w-full"}
+              styles={"absolute top-0 h-fit w-full z-10"}
             />
           </motion.div>
         ))}

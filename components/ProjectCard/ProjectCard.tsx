@@ -17,14 +17,16 @@ function ProjectCard({ summary, link, github, styles, demo, name }: any) {
       <h1 className="text-center m-10">{name}</h1>
       <div className="relative max-h-[300px] m-8">
         <motion.div
-          onHoverStart={() => setIsHovered(true)}
-          onHoverEnd={() => setIsHovered(false)}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           <video
             width="100%"
             height="260"
             loop
             autoPlay={true}
+            webkit-playsinline
+            playsinline
             muted
             className={`${
               isHovered ? "opacity-0" : null
@@ -34,8 +36,8 @@ function ProjectCard({ summary, link, github, styles, demo, name }: any) {
           </video>
         </motion.div>
         <motion.div
-          onHoverStart={() => setIsHovered(true)}
-          onHoverEnd={() => setIsHovered(false)}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           className={`${
             isHovered ? "opacity-1" : "opacity-0"
           } transition-all ease-in-out`}
