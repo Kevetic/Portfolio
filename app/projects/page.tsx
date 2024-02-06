@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CUSTOM from "@/public/CUSTOM.png";
 import MW from "@/public/MW.png";
 import homeMart from "@/public/homeMart.png";
@@ -108,8 +108,9 @@ type Project = {
 
 function Projects() {
   const [currentProject, setCurrentProject] = useState<Project | undefined>(
-    defaultProjectArray[0]
+    undefined
   );
+
   const [projectArray, setProjectArray] = useState(defaultProjectArray);
 
   const handleSelectedProject = async (id: any) => {
@@ -124,6 +125,12 @@ function Projects() {
       updatedProjects.find((project) => project.selected) as Project | undefined
     );
   };
+
+  useEffect(() => {
+    if (defaultProjectArray.length > 0) {
+      setCurrentProject(defaultProjectArray[0] as any);
+    }
+  }, []);
 
   return (
     <div
