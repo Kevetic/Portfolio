@@ -1,6 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import ProjectCard from "@/components/ProjectCard/ProjectCard";
+import React, { useState } from "react";
 import CUSTOM from "@/public/CUSTOM.png";
 import MW from "@/public/MW.png";
 import homeMart from "@/public/homeMart.png";
@@ -9,11 +8,11 @@ import QPS from "@/public/QPS.png";
 import M48 from "@/public/M48.png";
 import { motion } from "framer-motion";
 import CustomCursor from "@/components/Cursor/CustomCursor";
-import { Caveat } from "next/font/google";
-import CurrentDisplay from "@/components/CurrentDisplay/CurrentDisplay";
 import MobileProjects from "@/components/MobileProjects/MobileProjects";
+import SelectedProject from "@/components/SelectedProject/SelectedProject";
+import { Poppins } from "next/font/google";
 
-const caveat = Caveat({ subsets: ["latin"], weight: "700" });
+const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
 let projectArray = [
   {
@@ -23,7 +22,8 @@ let projectArray = [
     summary:
       "This bot quizzes users on ANY subject by utilizing an API call to OpenAI, generating an unlimited number of questions within budget constraints. The motivation behind its development was to simultaneously test my knowledge and enhance coding skills, creating an efficient and interactive self-quizzing tool.",
     challenges: "",
-    learned: "",
+    learned: "Working with OpenAI",
+    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
     projectLink: "https://chatgpt-quizz.vercel.app/",
     github: "https://github.com/Kevetic/projectxtwo",
   },
@@ -35,6 +35,7 @@ let projectArray = [
       "This served as a personal endeavor for me, driven by the desire to delve into learning React Three Fiber. It involves the integration of four controllable GLTF models, allowing users to select real-world models and render them on the screen.",
     challenges: "",
     learned: "",
+    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
     projectLink: "https://kevetic.github.io/Custom-Shoes/",
     github: "https://github.com/Kevetic/Custom-Shoes",
   },
@@ -46,6 +47,7 @@ let projectArray = [
       "I created a React app with a mobile-first approach that utilizes an API to fetch the latest trending movies and television shows. The app covers content currently in theaters as well as popular streaming platforms. This project served as a valuable exercise for me, allowing me to gain experience in working with APIs and developing a mobile-first application.",
     challenges: "",
     learned: "",
+    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
     projectLink: "https://kevetic.github.io/movie-watchlist/",
     github: "https://github.com/Kevetic/movie-watchlist",
   },
@@ -57,6 +59,7 @@ let projectArray = [
       "HomeMart is a e-commerce site crafted using Next.js, TypeScript, DaisyUI, Prisma, MongoDB, and Tailwind. This project serves as a hands-on exploration to enhance my skills, with a particular focus on Next.js—a powerful framework for building efficient web applications. This endeavor reflects my ongoing commitment to staying abreast of the latest developments in web development and contributing to its dynamic landscape.",
     challenges: "",
     learned: "",
+    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
     projectLink: "https://homemart.vercel.app/",
     github: "https://github.com/Kevetic/homeMart",
   },
@@ -69,6 +72,7 @@ let projectArray = [
     learned:
       "I gained extensive knowledge, primarily in PHP and templating with WordPress, and learned how to manage clientside aspects while engaging in DevOps during this experience.",
     projectLink: "https://www.quinnplasticsurgery.com/",
+    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
   },
   {
     projectName: "Make 48 Challenge",
@@ -81,21 +85,9 @@ let projectArray = [
     learned:
       "This marked my initial exposure to Tailwind, and I thoroughly enjoyed the experience, considering it as a game-changer. It provided me with the opportunity to delve into React at a much deeper level, gaining a comprehensive understanding of its intricacies, particularly in conjunction with context. ",
     projectLink: "https://48daychallenge.make48.com/",
+    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
   },
 ];
-
-const defaultAnimations = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-    x: -50,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    x: 0,
-  },
-};
 
 type Project = {
   projectName: string;
@@ -112,7 +104,9 @@ function Projects() {
   const [currentProject, setCurrentProject] = useState<Project | undefined>();
 
   return (
-    <div className="gap-4 lg:flex flex-col justify-center w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative items-center ">
+    <div
+      className={`gap-4 lg:flex flex-col justify-center w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative items-center ${poppins.className}`}
+    >
       <CustomCursor />
       <motion.div
         initial={{ opacity: 0 }}
@@ -123,32 +117,11 @@ function Projects() {
           transition: { duration: 1 },
         }}
       ></motion.div>
-      <div className="lg:flex hidden w-full justify-end items-center">
-        {currentProject ? (
-          <CurrentDisplay currentProject={currentProject} />
-        ) : null}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          transition={{ staggerChildren: 0.2, type: "spring" }}
-          className="gap-2relative items-end flex flex-col justify-end"
-        >
-          {projectArray.map((project, i) => (
-            <motion.div key={i} variants={defaultAnimations} className="m-8">
-              <ProjectCard
-                setCurrentProject={setCurrentProject}
-                project={project}
-                demo={project.demo}
-                name={project.projectName}
-                image={project.image}
-                summary={project.summary}
-                link={project.projectLink}
-                github={project.github}
-              />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+      <SelectedProject
+        setCurrentProject={setCurrentProject}
+        currentProject={currentProject}
+        projectArray={projectArray}
+      />
       <div className="lg:hidden ">
         {projectArray.map((project, i) => (
           <MobileProjects
@@ -158,7 +131,7 @@ function Projects() {
             summary={project.summary}
             link={project.projectLink}
             github={project.github}
-            styles={"absolute top-0 h-fit w-full md:p-20 p-2 z-10"}
+            styles={"absolute top-0 h-fit w-full md:p-20 p-2 z-10 "}
           />
         ))}
       </div>

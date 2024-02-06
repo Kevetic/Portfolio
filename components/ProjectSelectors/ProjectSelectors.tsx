@@ -1,13 +1,14 @@
 "use client";
 import React from "react";
 import { motion, useAnimate } from "framer-motion";
-function ProjectCard({ name, project, setCurrentProject, id }: any) {
+
+function ProjectSelectors({ name, project, setCurrentProject, id }: any) {
   const [scope, animate] = useAnimate();
 
   const onTapStart = async () => {
     await animate(
       "div",
-      { opacity: 1, x: -10, y: 10, background: "red" },
+      { opacity: 1, x: -10, y: 5 },
       { duration: 0.3, type: "spring", ease: "easeInOut" }
     );
     await animate(
@@ -17,14 +18,19 @@ function ProjectCard({ name, project, setCurrentProject, id }: any) {
     );
   };
 
+  const handleSelectedProject = async () => {
+    await setCurrentProject(null);
+    await setCurrentProject(project);
+  };
+
   return (
     <>
       <div className="relative" ref={scope}>
         <motion.div
           id={project.id}
           onTapStart={onTapStart}
-          onClick={() => setCurrentProject(project)}
-          className={`border p-2 rounded-xl min-w-[200px] max-w-[200px] `}
+          onClick={() => handleSelectedProject()}
+          className="border p-2 rounded-xl min-w-[200px] max-w-[200px] text-center"
         >
           {name}
         </motion.div>
@@ -33,4 +39,4 @@ function ProjectCard({ name, project, setCurrentProject, id }: any) {
   );
 }
 
-export default ProjectCard;
+export default ProjectSelectors;

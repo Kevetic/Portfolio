@@ -144,7 +144,8 @@ export const NameHolder = () => {
       </motion.div>
       <div className="relative">
         <motion.div
-          className={`${caveat.className} flex hover:opacity-5`}
+          className={`${caveat.className} flex`}
+          whileHover={{ opacity: 0 }}
           initial="hidden"
           animate="visible"
           transition={{ staggerChildren: 0.4, type: "spring" }}
