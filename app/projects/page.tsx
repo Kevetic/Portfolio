@@ -116,13 +116,14 @@ function Projects() {
           type: "spring",
           transition: { duration: 1 },
         }}
+        className="w-full"
       ></motion.div>
       <SelectedProject
         setCurrentProject={setCurrentProject}
         currentProject={currentProject}
         projectArray={projectArray}
       />
-      <div className="lg:hidden ">
+      <div className="lg:hidden w-full">
         {projectArray.map((project, i) => (
           <MobileProjects
             key={i}
