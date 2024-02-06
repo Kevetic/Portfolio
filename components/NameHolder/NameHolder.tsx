@@ -121,6 +121,7 @@ export const NameHolder = () => {
 
   return (
     <div className="w-screen flex flex-col justify-center items-center h-screen absolute -top-24">
+      <div className="bg-kevetic p-5 rounded-full text-center min-w-[200px] min-h-[200px] max-w-[200px] max-h-[200px] bg-cover m-auto -z-10 absolute opacity-45" />
       <motion.div
         className="flex gap-3 p-5 z-10 "
         initial={{ opacity: 0 }}
@@ -143,7 +144,7 @@ export const NameHolder = () => {
       </motion.div>
       <div className="relative">
         <motion.div
-          className={`${caveat.className} flex`}
+          className={`${caveat.className} flex hover:opacity-5`}
           initial="hidden"
           animate="visible"
           transition={{ staggerChildren: 0.4, type: "spring" }}

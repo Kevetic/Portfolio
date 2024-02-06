@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import CUSTOM from "@/public/CUSTOM.png";
 import MW from "@/public/MW.png";
@@ -10,6 +10,7 @@ import M48 from "@/public/M48.png";
 import { motion } from "framer-motion";
 import CustomCursor from "@/components/Cursor/CustomCursor";
 import { Caveat } from "next/font/google";
+import CurrentDisplay from "@/components/CurrentDisplay/CurrentDisplay";
 
 const caveat = Caveat({ subsets: ["latin"], weight: "700" });
 
@@ -94,11 +95,23 @@ const defaultAnimations = {
     x: 0,
   },
 };
-let goal = "OBJECTIVE";
-let split = goal.split("");
+
+type Project = {
+  projectName: string;
+  image: string;
+  demo: string;
+  summary: string;
+  challenges?: string;
+  learned?: string;
+  projectLink: string;
+  github?: string;
+};
+
 function Projects() {
+  const [currentProject, setCurrentProject] = useState<Project | undefined>();
+
   return (
-    <div className="gap-4 lg:flex flex-col justify-evenly w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative ">
+    <div className="gap-4 lg:flex flex-col justify-center w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative items-center ">
       <CustomCursor />
       <motion.div
         initial={{ opacity: 0 }}
@@ -108,64 +121,34 @@ function Projects() {
           type: "spring",
           transition: { duration: 1 },
         }}
-      >
+      ></motion.div>
+      <div className="hidden lg:flex w-full justify-end items-center">
+        {currentProject ? (
+          <CurrentDisplay currentProject={currentProject} />
+        ) : null}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-          className="p-5 rounded-xl text-center lg:w-11/12 m-auto lg:flex gap-10 relative"
+          initial="hidden"
+          animate="visible"
+          transition={{ staggerChildren: 0.2, type: "spring" }}
+          className="gap-2relative items-end flex flex-col justify-end"
         >
-          <div className="bg-kevetic p-5 rounded-full text-center min-w-[200px] min-h-[200px] max-w-[200px] max-h-[200px] bg-cover m-auto mb-10 z-10" />
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            transition={{ staggerChildren: 0.3, type: "spring" }}
-            className={`${caveat.className} absolute w-full h-full text-9xl text-foreground justify-end items-start top-20 opacity-20 lg:flex gap-5 hidden `}
-          >
-            {split.map((char, i) => (
-              <motion.h1 variants={defaultAnimations} key={i}>
-                {char}
-              </motion.h1>
-            ))}
-          </motion.h1>
-          <div className="lg:text-left lg:w-3/5">
-            In each of my projects, whether they are small or abstract, my
-            overall objective remains consistent. Fueled by a profound curiosity
-            for engaging technologies such as React Three Fiber and libraries
-            like Shadcn, I approach every project with a specific set of
-            guidelines. Firstly, I strive to refine and enhance the skills I
-            already have. Secondly, I aim to incorporate elements from my direct
-            previous project in some capacity, helping to retain and add it to
-            my toolkit. Lastly, I introduce and explore new technologies,
-            fostering a dynamic and forward-thinking approach in my work.
-          </div>
+          {projectArray.map((project, i) => (
+            <motion.div key={i} variants={defaultAnimations} className="m-8">
+              <ProjectCard
+                setCurrentProject={setCurrentProject}
+                project={project}
+                demo={project.demo}
+                name={project.projectName}
+                image={project.image}
+                summary={project.summary}
+                link={project.projectLink}
+                github={project.github}
+                styles={"absolute top-0 h-fit w-full z-10"}
+              />
+            </motion.div>
+          ))}
         </motion.div>
-      </motion.div>
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        transition={{ staggerChildren: 0.2, type: "spring" }}
-        className="lg:grid lg:grid-cols-3 gap-10 relative items-center flex flex-col"
-      >
-        {projectArray.map((project, i) => (
-          <motion.div
-            key={i}
-            variants={defaultAnimations}
-            className="m-8"
-            whileHover={{ y: -50 }}
-          >
-            <ProjectCard
-              demo={project.demo}
-              name={project.projectName}
-              image={project.image}
-              summary={project.summary}
-              link={project.projectLink}
-              github={project.github}
-              styles={"absolute top-0 h-fit w-full z-10"}
-            />
-          </motion.div>
-        ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
