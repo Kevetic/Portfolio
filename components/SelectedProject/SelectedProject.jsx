@@ -16,7 +16,12 @@ const defaultAnimations = {
   },
 };
 
-function SelectedProject({ currentProject, projectArray, setCurrentProject }) {
+function SelectedProject({
+  currentProject,
+  projectArray,
+  setCurrentProject,
+  handleSelectedProject,
+}) {
   return (
     <>
       <div className="lg:flex hidden w-full justify-end items-center">
@@ -32,6 +37,8 @@ function SelectedProject({ currentProject, projectArray, setCurrentProject }) {
           {projectArray.map((project, i) => (
             <motion.div key={i} variants={defaultAnimations} className="m-8">
               <ProjectSelectors
+                defaultAnimations={defaultAnimations}
+                handleSelectedProject={handleSelectedProject}
                 setCurrentProject={setCurrentProject}
                 currentProject={currentProject}
                 project={project}

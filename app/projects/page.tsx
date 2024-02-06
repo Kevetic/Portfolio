@@ -14,7 +14,19 @@ import { Poppins } from "next/font/google";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
-let projectArray = [
+let defaultProjectArray = [
+  {
+    projectName: "Quinns Plastic Surgery",
+    image: QPS,
+    demo: "/QPS.mp4",
+    summary:
+      "Dr. Quinn, a nearby plastic surgeon, required a website for his recently inaugurated practice. We undertook the project and developed it using WordPress and PHP.",
+    learned:
+      "I gained extensive knowledge, primarily in PHP and templating with WordPress, and learned how to manage clientside aspects while engaging in DevOps during this experience.",
+    projectLink: "https://www.quinnplasticsurgery.com/",
+    stacks: ["PHP", "WordPress", "CSS"],
+    selected: true,
+  },
   {
     projectName: "OpenAi QuizzBot",
     image: quizzBot,
@@ -36,7 +48,7 @@ let projectArray = [
       "This served as a personal endeavor for me, driven by the desire to delve into learning React Three Fiber. It involves the integration of four controllable GLTF models, allowing users to select real-world models and render them on the screen.",
     challenges: "",
     learned: "",
-    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
+    stacks: ["React Three Fiber", "Javascript", "React.js", "Tailwind"],
     projectLink: "https://kevetic.github.io/Custom-Shoes/",
     github: "https://github.com/Kevetic/Custom-Shoes",
     selected: false,
@@ -49,7 +61,7 @@ let projectArray = [
       "I created a React app with a mobile-first approach that utilizes an API to fetch the latest trending movies and television shows. The app covers content currently in theaters as well as popular streaming platforms. This project served as a valuable exercise for me, allowing me to gain experience in working with APIs and developing a mobile-first application.",
     challenges: "",
     learned: "",
-    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
+    stacks: ["Javascript", "React.js", "Tailwind"],
     projectLink: "https://kevetic.github.io/movie-watchlist/",
     github: "https://github.com/Kevetic/movie-watchlist",
     selected: false,
@@ -62,21 +74,9 @@ let projectArray = [
       "HomeMart is a e-commerce site crafted using Next.js, TypeScript, DaisyUI, Prisma, MongoDB, and Tailwind. This project serves as a hands-on exploration to enhance my skills, with a particular focus on Next.js—a powerful framework for building efficient web applications. This endeavor reflects my ongoing commitment to staying abreast of the latest developments in web development and contributing to its dynamic landscape.",
     challenges: "",
     learned: "",
-    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
+    stacks: ["Next.js", "Javascript", "React.js", "Tailwind"],
     projectLink: "https://homemart.vercel.app/",
     github: "https://github.com/Kevetic/homeMart",
-    selected: false,
-  },
-  {
-    projectName: "Quinns Plastic Surgery",
-    image: QPS,
-    demo: "/QPS.mp4",
-    summary:
-      "Dr. Quinn, a nearby plastic surgeon, required a website for his recently inaugurated practice. We undertook the project and developed it using WordPress and PHP.",
-    learned:
-      "I gained extensive knowledge, primarily in PHP and templating with WordPress, and learned how to manage clientside aspects while engaging in DevOps during this experience.",
-    projectLink: "https://www.quinnplasticsurgery.com/",
-    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
     selected: false,
   },
   {
@@ -90,7 +90,7 @@ let projectArray = [
     learned:
       "This marked my initial exposure to Tailwind, and I thoroughly enjoyed the experience, considering it as a game-changer. It provided me with the opportunity to delve into React at a much deeper level, gaining a comprehensive understanding of its intricacies, particularly in conjunction with context. ",
     projectLink: "https://48daychallenge.make48.com/",
-    stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
+    stacks: ["Javascript", "React.js", "Tailwind", "MaterialUI", "Laravel"],
     selected: false,
   },
 ];
@@ -107,11 +107,27 @@ type Project = {
 };
 
 function Projects() {
-  const [currentProject, setCurrentProject] = useState<Project | undefined>();
+  const [currentProject, setCurrentProject] = useState<Project | undefined>(
+    defaultProjectArray[0]
+  );
+  const [projectArray, setProjectArray] = useState(defaultProjectArray);
+
+  const handleSelectedProject = async (id: any) => {
+    const updatedProjects = projectArray.map((project) => {
+      return {
+        ...project,
+        selected: project.projectName === id,
+      };
+    });
+    setProjectArray(updatedProjects);
+    setCurrentProject(
+      updatedProjects.find((project) => project.selected) as Project | undefined
+    );
+  };
 
   return (
     <div
-      className={`gap-4 lg:flex flex-col justify-center w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative items-center ${poppins.className}`}
+      className={`gap-4 lg:flex flex-col justify-center max-w-[1080px] w-11/12 m-auto transition-all duration-700 ease-in-out lg:relative items-center ${poppins.className}`}
     >
       <CustomCursor />
       <motion.div
@@ -125,6 +141,7 @@ function Projects() {
         className="w-full"
       ></motion.div>
       <SelectedProject
+        handleSelectedProject={handleSelectedProject}
         setCurrentProject={setCurrentProject}
         currentProject={currentProject}
         projectArray={projectArray}
