@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
 function CurrentDisplay({ currentProject }) {
-  console.log(currentProject);
   return (
     <>
       <motion.div

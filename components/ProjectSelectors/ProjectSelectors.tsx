@@ -1,9 +1,20 @@
 "use client";
-import React from "react";
-import { motion, useAnimate } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { color, motion, useAnimate } from "framer-motion";
 
-function ProjectSelectors({ name, project, setCurrentProject, id }: any) {
+function ProjectSelectors({
+  name,
+  project,
+  setCurrentProject,
+  currentProject,
+  id,
+}: any) {
   const [scope, animate] = useAnimate();
+  const [colorChange, setColorChange] = useState((project.selected = false));
+
+  useEffect(() => {
+    handleSelectedProject();
+  }, [colorChange]);
 
   const onTapStart = async () => {
     await animate(
@@ -18,9 +29,16 @@ function ProjectSelectors({ name, project, setCurrentProject, id }: any) {
     );
   };
 
-  const handleSelectedProject = async () => {
+  const handleSelectedProject = async (id) => {
     await setCurrentProject(null);
     await setCurrentProject(project);
+
+    if (id === currentProject.id) {
+      setColorChange((project.selected = true));
+      console.log("true");
+    } else {
+      setColorChange((project.selected = false));
+    }
   };
 
   return (
@@ -29,8 +47,10 @@ function ProjectSelectors({ name, project, setCurrentProject, id }: any) {
         <motion.div
           id={project.id}
           onTapStart={onTapStart}
-          onClick={() => handleSelectedProject()}
-          className="border p-2 rounded-xl min-w-[200px] max-w-[200px] text-center m-4"
+          onClick={() => handleSelectedProject(id)}
+          className={`${
+            project.selected ? "bg-red-500" : "bg-secondary"
+          } border p-2 rounded-xl min-w-[200px] max-w-[200px] text-center m-4`}
         >
           {name}
         </motion.div>

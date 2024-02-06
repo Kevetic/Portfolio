@@ -26,6 +26,7 @@ let projectArray = [
     stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
     projectLink: "https://chatgpt-quizz.vercel.app/",
     github: "https://github.com/Kevetic/projectxtwo",
+    selected: false,
   },
   {
     projectName: "Shoe Customization",
@@ -38,6 +39,7 @@ let projectArray = [
     stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
     projectLink: "https://kevetic.github.io/Custom-Shoes/",
     github: "https://github.com/Kevetic/Custom-Shoes",
+    selected: false,
   },
   {
     projectName: "Trending Movies",
@@ -50,6 +52,7 @@ let projectArray = [
     stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
     projectLink: "https://kevetic.github.io/movie-watchlist/",
     github: "https://github.com/Kevetic/movie-watchlist",
+    selected: false,
   },
   {
     projectName: "HomeMart",
@@ -62,6 +65,7 @@ let projectArray = [
     stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
     projectLink: "https://homemart.vercel.app/",
     github: "https://github.com/Kevetic/homeMart",
+    selected: false,
   },
   {
     projectName: "Quinns Plastic Surgery",
@@ -73,6 +77,7 @@ let projectArray = [
       "I gained extensive knowledge, primarily in PHP and templating with WordPress, and learned how to manage clientside aspects while engaging in DevOps during this experience.",
     projectLink: "https://www.quinnplasticsurgery.com/",
     stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
+    selected: false,
   },
   {
     projectName: "Make 48 Challenge",
@@ -86,6 +91,7 @@ let projectArray = [
       "This marked my initial exposure to Tailwind, and I thoroughly enjoyed the experience, considering it as a game-changer. It provided me with the opportunity to delve into React at a much deeper level, gaining a comprehensive understanding of its intricacies, particularly in conjunction with context. ",
     projectLink: "https://48daychallenge.make48.com/",
     stacks: ["Next.js", "Javascript", "React.js", "Tailwind", "Shadcn"],
+    selected: false,
   },
 ];
 

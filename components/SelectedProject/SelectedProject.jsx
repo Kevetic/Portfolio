@@ -33,6 +33,7 @@ function SelectedProject({ currentProject, projectArray, setCurrentProject }) {
             <motion.div key={i} variants={defaultAnimations} className="m-8">
               <ProjectSelectors
                 setCurrentProject={setCurrentProject}
+                currentProject={currentProject}
                 project={project}
                 demo={project.demo}
                 name={project.projectName}
