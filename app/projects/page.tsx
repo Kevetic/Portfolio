@@ -149,21 +149,19 @@ function Projects() {
           ))}
         </motion.div>
       </div>
-      <>
-        <div>
-          {projectArray.map((project, i) => (
-            <MobileProjects
-              key={i}
-              demo={project.demo}
-              name={project.projectName}
-              summary={project.summary}
-              link={project.projectLink}
-              github={project.github}
-              styles={"absolute top-0 h-fit w-full z-10"}
-            />
-          ))}
-        </div>
-      </>
+      <div className="lg:hidden ">
+        {projectArray.map((project, i) => (
+          <MobileProjects
+            key={i}
+            demo={project.demo}
+            name={project.projectName}
+            summary={project.summary}
+            link={project.projectLink}
+            github={project.github}
+            styles={"absolute top-0 h-fit w-full md:p-20 p-2 z-10"}
+          />
+        ))}
+      </div>
     </div>
   );
 }

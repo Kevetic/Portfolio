@@ -2,7 +2,6 @@ import React from "react";
 import { motion } from "framer-motion";
 
 function CurrentDisplay({ currentProject }) {
-  console.log(currentProject);
   return (
     <>
       <motion.div className="w-full border rounded-xl flex justify-between p-2">

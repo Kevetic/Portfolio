@@ -1,31 +1,18 @@
 "use client";
-import React, { useState } from "react";
-
+import React from "react";
 import { motion, useAnimate } from "framer-motion";
-
-import { Button } from "../ui/button";
-import Link from "next/link";
-function ProjectCard({
-  summary,
-  link,
-  github,
-  styles,
-  demo,
-  name,
-  project,
-  setCurrentProject,
-}: any) {
+function ProjectCard({ name, project, setCurrentProject, id }: any) {
   const [scope, animate] = useAnimate();
 
   const onTapStart = async () => {
     await animate(
       "div",
-      { opacity: 1, x: -100 },
+      { opacity: 1, x: -10, y: 10, background: "red" },
       { duration: 0.3, type: "spring", ease: "easeInOut" }
     );
     await animate(
       "div",
-      { opacity: 1, x: 0 },
+      { opacity: 1, x: 0, y: 0 },
       { duration: 0.3, type: "spring", ease: "easeInOut" }
     );
   };
@@ -34,9 +21,10 @@ function ProjectCard({
     <>
       <div className="relative" ref={scope}>
         <motion.div
+          id={project.id}
           onTapStart={onTapStart}
           onClick={() => setCurrentProject(project)}
-          className="border p-2 rounded-xl min-w-[200px] max-w-[200px]"
+          className={`border p-2 rounded-xl min-w-[200px] max-w-[200px] `}
         >
           {name}
         </motion.div>

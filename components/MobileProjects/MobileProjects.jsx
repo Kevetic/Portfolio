@@ -13,34 +13,34 @@ function MobileProjects({ summary, link, github, styles, demo, name }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="lg:hidden flex flex-col">
+    <div className="lg:hidden flex flex-col m-20">
       <h1 className="text-center m-10">{name}</h1>
       <div className="relative">
         <motion.div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <video
+          <motion.video
+            animate={{
+              opacity: isHovered ? "0" : "1",
+            }}
             width="100%"
             height="260"
             loop
             autoPlay={true}
-            webkit-playsInline={true}
             playsInline
             muted
-            className={`${
-              isHovered ? "opacity-0" : null
-            } transition-all ease-in-out`}
-          >
-            <source src={demo} type="video/mp4" />
-          </video>
+            src={demo}
+            className={`transition-all ease-in-out`}
+          />
         </motion.div>
         <motion.div
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className={`${
-            isHovered ? "opacity-1" : "opacity-0"
-          } transition-all ease-in-out`}
+          animate={{
+            opacity: isHovered ? "1" : "0",
+          }}
+          className={` transition-all ease-in-out`}
         >
           <Card className={styles}>
             <CardHeader>
