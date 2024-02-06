@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import CustomCursor from "@/components/Cursor/CustomCursor";
 import { Caveat } from "next/font/google";
 import CurrentDisplay from "@/components/CurrentDisplay/CurrentDisplay";
+import MobileProjects from "@/components/MobileProjects/MobileProjects";
 
 const caveat = Caveat({ subsets: ["latin"], weight: "700" });
 
@@ -122,7 +123,7 @@ function Projects() {
           transition: { duration: 1 },
         }}
       ></motion.div>
-      <div className="hidden lg:flex w-full justify-end items-center">
+      <div className="lg:flex hidden w-full justify-end items-center">
         {currentProject ? (
           <CurrentDisplay currentProject={currentProject} />
         ) : null}
@@ -143,12 +144,26 @@ function Projects() {
                 summary={project.summary}
                 link={project.projectLink}
                 github={project.github}
-                styles={"absolute top-0 h-fit w-full z-10"}
               />
             </motion.div>
           ))}
         </motion.div>
       </div>
+      <>
+        <div>
+          {projectArray.map((project, i) => (
+            <MobileProjects
+              key={i}
+              demo={project.demo}
+              name={project.projectName}
+              summary={project.summary}
+              link={project.projectLink}
+              github={project.github}
+              styles={"absolute top-0 h-fit w-full z-10"}
+            />
+          ))}
+        </div>
+      </>
     </div>
   );
 }
